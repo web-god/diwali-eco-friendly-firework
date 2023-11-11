@@ -1,0 +1,353 @@
+:root {
+    --width: 70px;
+    --tui-dia: 50px;
+    --tui-w: 4px;
+    --tui-rpos: -0.7em;
+    --tui-long-h: 14em;
+    --ig-time: 4s; }
+  
+  *, *::after, *::before {
+    box-sizing: border-box; }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    height: 100%; }
+  
+  html {
+    background: #000;
+    overflow: hidden; }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  
+  .wrapper {
+    height: 600px;
+    width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-gap: 1px; }
+  
+  @keyframes tat {
+    0% {
+      grid-template-columns: 1fr 4fr 1fr;
+      grid-template-rows: 1fr 4fr 1fr; }
+    30% {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr; }
+    70%,
+    100% {
+      grid-template-columns: 0fr 4fr 0fr;
+      grid-template-rows: 0fr 2fr 0fr; } }
+  
+  .item {
+    border-radius: 10px; }
+  
+  .item1 {
+    grid-column-start: 1;
+    grid-column-end: 4; }
+  
+  .item7 {
+    grid-column-start: 1;
+    grid-column-end: 4; }
+  
+  .item5 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2; }
+  
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  
+  label {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10; }
+    label::after {
+      content: 'Tap anywhere to lit the cracker! 🧨';
+      font: 100 30px "Arial";
+      position: relative;
+      color:yellow;
+      text-align: center;
+      display: inline-block;
+      width: 100%; }
+  
+  #ignitor {
+    position: absolute;
+    top: 50px;
+    left: 99999%;
+    display: none; }
+  
+  input[type="checkbox"]:checked ~ .wrapper {
+      animation: tat 4s cubic-bezier(1, 0.1, 0.1, 1) both;
+  
+      & .fc-main {
+          animation: resize 6s cubic-bezier(.79, .14, .15, .86) both;
+  
+          & .fc-tui {
+              animation: curved-tui var(--ig-time) forwards;
+          }
+  
+          & .fc-tui-long {
+              animation: tui-on-fire var(--ig-time) linear forwards;
+          }
+          & .spark {
+              animation: spark-fire 2s forwards;
+          }
+      }
+  
+      & .spreader {
+          animation: fade-out calc(var(--ig-time) + 4s) 9s both;	
+  
+          &::after {
+              animation: take_off var(--ig-time) 4s;
+          }
+          & > * {
+              animation-fill-mode: both;
+              display:inline-block;
+              position: absolute;
+              transform-origin: center;
+              transform: translate(-50%, -50%);
+          }
+          & .item {
+              animation-timing-function: cubic-bezier(0.2,0.5,0.2,1);
+              background: gold; 
+              height: 4px;
+              width: 4px;
+              animation-delay: calc(var(--ig-time) + 4s);
+              box-shadow: 0 0 5px orange;
+              animation-duration: 7s;
+          }
+          & .item_s {
+              animation-timing-function: cubic-bezier(0.1,0.3,0.8,1);
+              animation-delay: calc(var(--ig-time) + 4s);
+              background: orangered; 
+              box-shadow: 0 0 10px yellow;
+              height: 2px;
+              width: 2px;
+              animation-duration: 4s;
+          }
+          & .item_b {
+              animation-timing-function: cubic-bezier(0.6,1,0.2,1);
+              animation-delay: calc(var(--ig-time) + 4s);
+              animation-duration: 6s;
+              background: pink; 
+              box-shadow: 0 0 10px yellow;
+              height: 2px;
+              width: 2px;
+          }
+      }
+  
+      @for $i from 1 through 200{
+          .item_#{$i} 
+          {
+              animation-name: blow_#{$i};
+          }
+          @keyframes blow_#{$i} {
+              0% {
+                  left: 50%;	
+                  top:  30%;
+                  opacity: 0;
+              }
+              10% {
+                  opacity: 1;
+              }
+              100% {
+                  left: random(100) + vw;
+                  top: random(90) + vh;
+                  opacity: 1;
+              }
+          }
+      }
+  
+      /*small*/
+      @for $j from 201 through 300{
+          .item_#{$j} 
+          {
+              animation-name: blow_#{$j};
+          }
+          @keyframes blow_#{$j} {
+              0% {
+                  left: 50%;	
+                  top:  30%;
+                  opacity: 0;
+              }
+              20% {
+                  opacity: 1;
+              }
+              100% {
+                  left: random(100) + vw;
+                  top: random(90) + vh;
+                  opacity: 1;
+              }
+          }
+      }
+  
+      @for $k from 301 through 600{
+          .item_#{$k} 
+          {
+              animation-name: blow_#{$k};
+          }
+          @keyframes blow_#{$k} {
+              0% {
+                  left: 50%;	
+                  top:  30%;
+                  opacity: 0;
+              }
+              10%, 80% {
+                  opacity: 1;
+              }
+              100% {
+                  left: random(100) + vw;
+                  top: random(100) + vh;
+                  opacity: 0
+              }
+          }
+      }
+  }
+  @keyframes fade-out {
+    0%, 60% {
+      opacity: 1; }
+    100% {
+      opacity: 0; } }
+  
+  input[type="checkbox"]:checked,
+  input[type="checkbox"]:checked ~ label {
+    position: absolute;
+    left: -9999999;
+    display: none; }
+  
+  @keyframes spark-fire {
+    0% {
+      opacity: 0; }
+    20%, 100% {
+      opacity: 1; } }
+  
+  @keyframes curved-tui {
+    0%,
+    98% {
+      opacity: 1; }
+    100% {
+      opacity: 0; } }
+  
+  @keyframes tui-on-fire {
+    0% {
+      height: var(--tui-long-h); }
+    96% {
+      height: 0;
+      opacity: 1; }
+    100% {
+      height: 0;
+      opacity: 0; } }
+  
+  @keyframes resize {
+    0% {
+      transform: scale(1) translateY(0); }
+    20% {
+      transform: scale(3) translateY(20%); }
+    60% {
+      transform: scale(3) translateY(60%); }
+    65% {
+      transform: scale(0.1) translateY(100%); }
+    70%,
+    100% {
+      transform: scale(0.1) translateY(100%); } }
+  
+  .fc-main {
+    width: calc(var(--width));
+    height: calc(var(--width)*4);
+    position: relative;
+    transform-origin: bottom; }
+    .fc-main::after {
+      content: '';
+      position: absolute;
+      background: repeating-linear-gradient(155deg, #8e0a0a, #b01515 20%);
+      height: calc(var(--width)*4);
+      width: calc(var(--width));
+      border-radius: 4px; }
+  
+  .fc-tui {
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    height: calc(var(--tui-dia)/2);
+    width: calc(var(--tui-dia)/2);
+    position: absolute;
+    top: -0.5em;
+    right: var(--tui-rpos);
+    z-index: -2;
+    background: linear-gradient(45deg, black 54%, transparent 50%), radial-gradient(transparent 48%, #444 49%, #222 50%, #ddd 70%, #111 100%);
+    transform: rotate(-45deg); }
+  
+  .fc-tui-long {
+    background: linear-gradient(to right, #444 1%, #222 10%, #ddd 80%, #111 100%);
+    height: var(--tui-long-h);
+    position: absolute;
+    right: var(--tui-rpos);
+    top: 0.2em;
+    transform-origin: top;
+    transform: rotateX(0deg);
+    width: var(--tui-w); }
+  
+  .spark {
+    background: linear-gradient(orangered 30%, yellow, transparent);
+    border-radius: 50px;
+    height: 3px;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 99%;
+    transform: translateX(-50%);
+    width: 5px; }
+    .spark::after {
+      content: '';
+      position: absolute;
+      border-radius: 50px 50px 0 0;
+      height: 8px;
+      width: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(yellow, orangered 0.5px, rgba(255, 255, 255, 0) 0.5px);
+      background-size: 1.5px 2px;
+      top: 10%;
+      animation: spark 0.5s linear infinite forwards; }
+  
+  @keyframes spark {
+    from {
+      background-position-y: 0; }
+    to {
+      background-position-y: 20px; } }
+  
+  .spreader::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    background: yellow;
+    box-shadow: 0 0 5px orange;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 898;
+    opacity: 0; }
+  
+  @keyframes take_off {
+    0% {
+      top: 80%;
+      left: 50%;
+      opacity: 0; }
+    30%, 80% {
+      opacity: 1; }
+    90% {
+      opacity: 0; }
+    100% {
+      left: 50%;
+      top: 32%;
+      opacity: 0; } }
+  

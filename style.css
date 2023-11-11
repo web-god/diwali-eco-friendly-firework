@@ -1,0 +1,11131 @@
+@charset "UTF-8";
+:root {
+  --width: 70px;
+  --tui-dia: 50px;
+  --tui-w: 4px;
+  --tui-rpos: -0.7em;
+  --tui-long-h: 14em;
+  --ig-time: 4s;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  height: 100%;
+}
+
+html {
+  background: #000;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  height: 600px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-gap: 1px;
+}
+
+@keyframes tat {
+  0% {
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+  }
+  30% {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  70%, 100% {
+    grid-template-columns: 0fr 4fr 0fr;
+    grid-template-rows: 0fr 2fr 0fr;
+  }
+}
+.item {
+  border-radius: 10px;
+}
+
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.item7 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.item5 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+label::after {
+  content: "Tap anywhere to lit the cracker! 🧨";
+  font: 100 30px "Arial";
+  position: relative;
+  color: yellow;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+#ignitor {
+  position: absolute;
+  top: 50px;
+  left: 99999%;
+  display: none;
+}
+
+input[type=checkbox]:checked ~ .wrapper {
+  animation: tat 4s cubic-bezier(1, 0.1, 0.1, 1) both;
+  /*small*/
+}
+input[type=checkbox]:checked ~ .wrapper .fc-main {
+  animation: resize 6s cubic-bezier(0.79, 0.14, 0.15, 0.86) both;
+}
+input[type=checkbox]:checked ~ .wrapper .fc-main .fc-tui {
+  animation: curved-tui var(--ig-time) forwards;
+}
+input[type=checkbox]:checked ~ .wrapper .fc-main .fc-tui-long {
+  animation: tui-on-fire var(--ig-time) linear forwards;
+}
+input[type=checkbox]:checked ~ .wrapper .fc-main .spark {
+  animation: spark-fire 2s forwards;
+}
+input[type=checkbox]:checked ~ .wrapper .spreader {
+  animation: fade-out calc(var(--ig-time) + 4s) 9s both;
+}
+input[type=checkbox]:checked ~ .wrapper .spreader::after {
+  animation: take_off var(--ig-time) 4s;
+}
+input[type=checkbox]:checked ~ .wrapper .spreader > * {
+  animation-fill-mode: both;
+  display: inline-block;
+  position: absolute;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}
+input[type=checkbox]:checked ~ .wrapper .spreader .item {
+  animation-timing-function: cubic-bezier(0.2, 0.5, 0.2, 1);
+  background: gold;
+  height: 4px;
+  width: 4px;
+  animation-delay: calc(var(--ig-time) + 4s);
+  box-shadow: 0 0 5px orange;
+  animation-duration: 7s;
+}
+input[type=checkbox]:checked ~ .wrapper .spreader .item_s {
+  animation-timing-function: cubic-bezier(0.1, 0.3, 0.8, 1);
+  animation-delay: calc(var(--ig-time) + 4s);
+  background: orangered;
+  box-shadow: 0 0 10px yellow;
+  height: 2px;
+  width: 2px;
+  animation-duration: 4s;
+}
+input[type=checkbox]:checked ~ .wrapper .spreader .item_b {
+  animation-timing-function: cubic-bezier(0.6, 1, 0.2, 1);
+  animation-delay: calc(var(--ig-time) + 4s);
+  animation-duration: 6s;
+  background: pink;
+  box-shadow: 0 0 10px yellow;
+  height: 2px;
+  width: 2px;
+}
+input[type=checkbox]:checked ~ .wrapper .item_1 {
+  animation-name: blow_1;
+}
+@keyframes blow_1 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 73vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_2 {
+  animation-name: blow_2;
+}
+@keyframes blow_2 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 1vw;
+    top: 4vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_3 {
+  animation-name: blow_3;
+}
+@keyframes blow_3 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 80vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_4 {
+  animation-name: blow_4;
+}
+@keyframes blow_4 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 68vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_5 {
+  animation-name: blow_5;
+}
+@keyframes blow_5 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_6 {
+  animation-name: blow_6;
+}
+@keyframes blow_6 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 3vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_7 {
+  animation-name: blow_7;
+}
+@keyframes blow_7 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 78vw;
+    top: 14vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_8 {
+  animation-name: blow_8;
+}
+@keyframes blow_8 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 51vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_9 {
+  animation-name: blow_9;
+}
+@keyframes blow_9 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 32vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_10 {
+  animation-name: blow_10;
+}
+@keyframes blow_10 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 79vw;
+    top: 60vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_11 {
+  animation-name: blow_11;
+}
+@keyframes blow_11 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 31vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_12 {
+  animation-name: blow_12;
+}
+@keyframes blow_12 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 19vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_13 {
+  animation-name: blow_13;
+}
+@keyframes blow_13 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 62vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_14 {
+  animation-name: blow_14;
+}
+@keyframes blow_14 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 23vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_15 {
+  animation-name: blow_15;
+}
+@keyframes blow_15 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 15vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_16 {
+  animation-name: blow_16;
+}
+@keyframes blow_16 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 65vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_17 {
+  animation-name: blow_17;
+}
+@keyframes blow_17 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 85vw;
+    top: 22vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_18 {
+  animation-name: blow_18;
+}
+@keyframes blow_18 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 22vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_19 {
+  animation-name: blow_19;
+}
+@keyframes blow_19 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 21vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_20 {
+  animation-name: blow_20;
+}
+@keyframes blow_20 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 69vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_21 {
+  animation-name: blow_21;
+}
+@keyframes blow_21 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 45vw;
+    top: 10vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_22 {
+  animation-name: blow_22;
+}
+@keyframes blow_22 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_23 {
+  animation-name: blow_23;
+}
+@keyframes blow_23 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 26vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_24 {
+  animation-name: blow_24;
+}
+@keyframes blow_24 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 96vw;
+    top: 87vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_25 {
+  animation-name: blow_25;
+}
+@keyframes blow_25 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_26 {
+  animation-name: blow_26;
+}
+@keyframes blow_26 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 98vw;
+    top: 53vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_27 {
+  animation-name: blow_27;
+}
+@keyframes blow_27 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 36vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_28 {
+  animation-name: blow_28;
+}
+@keyframes blow_28 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 14vw;
+    top: 16vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_29 {
+  animation-name: blow_29;
+}
+@keyframes blow_29 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 15vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_30 {
+  animation-name: blow_30;
+}
+@keyframes blow_30 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 25vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_31 {
+  animation-name: blow_31;
+}
+@keyframes blow_31 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 14vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_32 {
+  animation-name: blow_32;
+}
+@keyframes blow_32 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 48vw;
+    top: 8vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_33 {
+  animation-name: blow_33;
+}
+@keyframes blow_33 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 4vw;
+    top: 55vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_34 {
+  animation-name: blow_34;
+}
+@keyframes blow_34 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 62vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_35 {
+  animation-name: blow_35;
+}
+@keyframes blow_35 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 46vw;
+    top: 62vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_36 {
+  animation-name: blow_36;
+}
+@keyframes blow_36 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 28vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_37 {
+  animation-name: blow_37;
+}
+@keyframes blow_37 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 13vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_38 {
+  animation-name: blow_38;
+}
+@keyframes blow_38 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 72vw;
+    top: 26vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_39 {
+  animation-name: blow_39;
+}
+@keyframes blow_39 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 31vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_40 {
+  animation-name: blow_40;
+}
+@keyframes blow_40 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 39vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_41 {
+  animation-name: blow_41;
+}
+@keyframes blow_41 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 13vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_42 {
+  animation-name: blow_42;
+}
+@keyframes blow_42 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_43 {
+  animation-name: blow_43;
+}
+@keyframes blow_43 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 98vw;
+    top: 90vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_44 {
+  animation-name: blow_44;
+}
+@keyframes blow_44 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 64vw;
+    top: 10vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_45 {
+  animation-name: blow_45;
+}
+@keyframes blow_45 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 1vw;
+    top: 30vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_46 {
+  animation-name: blow_46;
+}
+@keyframes blow_46 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 11vw;
+    top: 82vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_47 {
+  animation-name: blow_47;
+}
+@keyframes blow_47 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 45vw;
+    top: 53vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_48 {
+  animation-name: blow_48;
+}
+@keyframes blow_48 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 71vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_49 {
+  animation-name: blow_49;
+}
+@keyframes blow_49 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_50 {
+  animation-name: blow_50;
+}
+@keyframes blow_50 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 84vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_51 {
+  animation-name: blow_51;
+}
+@keyframes blow_51 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 53vw;
+    top: 9vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_52 {
+  animation-name: blow_52;
+}
+@keyframes blow_52 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 12vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_53 {
+  animation-name: blow_53;
+}
+@keyframes blow_53 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_54 {
+  animation-name: blow_54;
+}
+@keyframes blow_54 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 39vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_55 {
+  animation-name: blow_55;
+}
+@keyframes blow_55 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 6vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_56 {
+  animation-name: blow_56;
+}
+@keyframes blow_56 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 81vw;
+    top: 10vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_57 {
+  animation-name: blow_57;
+}
+@keyframes blow_57 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 4vw;
+    top: 63vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_58 {
+  animation-name: blow_58;
+}
+@keyframes blow_58 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 48vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_59 {
+  animation-name: blow_59;
+}
+@keyframes blow_59 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 27vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_60 {
+  animation-name: blow_60;
+}
+@keyframes blow_60 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 69vw;
+    top: 80vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_61 {
+  animation-name: blow_61;
+}
+@keyframes blow_61 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 28vw;
+    top: 56vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_62 {
+  animation-name: blow_62;
+}
+@keyframes blow_62 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_63 {
+  animation-name: blow_63;
+}
+@keyframes blow_63 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 65vw;
+    top: 22vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_64 {
+  animation-name: blow_64;
+}
+@keyframes blow_64 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 21vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_65 {
+  animation-name: blow_65;
+}
+@keyframes blow_65 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 23vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_66 {
+  animation-name: blow_66;
+}
+@keyframes blow_66 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_67 {
+  animation-name: blow_67;
+}
+@keyframes blow_67 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 35vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_68 {
+  animation-name: blow_68;
+}
+@keyframes blow_68 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 1vw;
+    top: 35vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_69 {
+  animation-name: blow_69;
+}
+@keyframes blow_69 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 36vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_70 {
+  animation-name: blow_70;
+}
+@keyframes blow_70 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 23vw;
+    top: 49vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_71 {
+  animation-name: blow_71;
+}
+@keyframes blow_71 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 63vw;
+    top: 39vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_72 {
+  animation-name: blow_72;
+}
+@keyframes blow_72 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 71vw;
+    top: 87vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_73 {
+  animation-name: blow_73;
+}
+@keyframes blow_73 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 44vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_74 {
+  animation-name: blow_74;
+}
+@keyframes blow_74 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 60vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_75 {
+  animation-name: blow_75;
+}
+@keyframes blow_75 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 26vw;
+    top: 3vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_76 {
+  animation-name: blow_76;
+}
+@keyframes blow_76 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 43vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_77 {
+  animation-name: blow_77;
+}
+@keyframes blow_77 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 89vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_78 {
+  animation-name: blow_78;
+}
+@keyframes blow_78 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_79 {
+  animation-name: blow_79;
+}
+@keyframes blow_79 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 50vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_80 {
+  animation-name: blow_80;
+}
+@keyframes blow_80 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 87vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_81 {
+  animation-name: blow_81;
+}
+@keyframes blow_81 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 59vw;
+    top: 3vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_82 {
+  animation-name: blow_82;
+}
+@keyframes blow_82 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 87vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_83 {
+  animation-name: blow_83;
+}
+@keyframes blow_83 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 42vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_84 {
+  animation-name: blow_84;
+}
+@keyframes blow_84 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 89vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_85 {
+  animation-name: blow_85;
+}
+@keyframes blow_85 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 24vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_86 {
+  animation-name: blow_86;
+}
+@keyframes blow_86 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 87vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_87 {
+  animation-name: blow_87;
+}
+@keyframes blow_87 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 57vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_88 {
+  animation-name: blow_88;
+}
+@keyframes blow_88 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 76vw;
+    top: 27vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_89 {
+  animation-name: blow_89;
+}
+@keyframes blow_89 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 28vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_90 {
+  animation-name: blow_90;
+}
+@keyframes blow_90 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_91 {
+  animation-name: blow_91;
+}
+@keyframes blow_91 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 71vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_92 {
+  animation-name: blow_92;
+}
+@keyframes blow_92 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 44vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_93 {
+  animation-name: blow_93;
+}
+@keyframes blow_93 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_94 {
+  animation-name: blow_94;
+}
+@keyframes blow_94 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 74vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_95 {
+  animation-name: blow_95;
+}
+@keyframes blow_95 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 13vw;
+    top: 76vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_96 {
+  animation-name: blow_96;
+}
+@keyframes blow_96 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 69vw;
+    top: 44vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_97 {
+  animation-name: blow_97;
+}
+@keyframes blow_97 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 65vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_98 {
+  animation-name: blow_98;
+}
+@keyframes blow_98 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 11vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_99 {
+  animation-name: blow_99;
+}
+@keyframes blow_99 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 53vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_100 {
+  animation-name: blow_100;
+}
+@keyframes blow_100 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 78vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_101 {
+  animation-name: blow_101;
+}
+@keyframes blow_101 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 59vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_102 {
+  animation-name: blow_102;
+}
+@keyframes blow_102 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 82vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_103 {
+  animation-name: blow_103;
+}
+@keyframes blow_103 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 35vw;
+    top: 6vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_104 {
+  animation-name: blow_104;
+}
+@keyframes blow_104 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 32vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_105 {
+  animation-name: blow_105;
+}
+@keyframes blow_105 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 72vw;
+    top: 54vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_106 {
+  animation-name: blow_106;
+}
+@keyframes blow_106 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 31vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_107 {
+  animation-name: blow_107;
+}
+@keyframes blow_107 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_108 {
+  animation-name: blow_108;
+}
+@keyframes blow_108 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 57vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_109 {
+  animation-name: blow_109;
+}
+@keyframes blow_109 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 32vw;
+    top: 36vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_110 {
+  animation-name: blow_110;
+}
+@keyframes blow_110 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 39vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_111 {
+  animation-name: blow_111;
+}
+@keyframes blow_111 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 49vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_112 {
+  animation-name: blow_112;
+}
+@keyframes blow_112 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 8vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_113 {
+  animation-name: blow_113;
+}
+@keyframes blow_113 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 81vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_114 {
+  animation-name: blow_114;
+}
+@keyframes blow_114 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 5vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_115 {
+  animation-name: blow_115;
+}
+@keyframes blow_115 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 68vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_116 {
+  animation-name: blow_116;
+}
+@keyframes blow_116 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 58vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_117 {
+  animation-name: blow_117;
+}
+@keyframes blow_117 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 78vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_118 {
+  animation-name: blow_118;
+}
+@keyframes blow_118 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 43vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_119 {
+  animation-name: blow_119;
+}
+@keyframes blow_119 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 1vw;
+    top: 42vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_120 {
+  animation-name: blow_120;
+}
+@keyframes blow_120 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 28vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_121 {
+  animation-name: blow_121;
+}
+@keyframes blow_121 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 14vw;
+    top: 1vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_122 {
+  animation-name: blow_122;
+}
+@keyframes blow_122 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 57vw;
+    top: 15vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_123 {
+  animation-name: blow_123;
+}
+@keyframes blow_123 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 23vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_124 {
+  animation-name: blow_124;
+}
+@keyframes blow_124 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_125 {
+  animation-name: blow_125;
+}
+@keyframes blow_125 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 10vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_126 {
+  animation-name: blow_126;
+}
+@keyframes blow_126 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 5vw;
+    top: 24vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_127 {
+  animation-name: blow_127;
+}
+@keyframes blow_127 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 62vw;
+    top: 26vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_128 {
+  animation-name: blow_128;
+}
+@keyframes blow_128 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 26vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_129 {
+  animation-name: blow_129;
+}
+@keyframes blow_129 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 11vw;
+    top: 55vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_130 {
+  animation-name: blow_130;
+}
+@keyframes blow_130 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 34vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_131 {
+  animation-name: blow_131;
+}
+@keyframes blow_131 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 96vw;
+    top: 90vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_132 {
+  animation-name: blow_132;
+}
+@keyframes blow_132 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 32vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_133 {
+  animation-name: blow_133;
+}
+@keyframes blow_133 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 35vw;
+    top: 17vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_134 {
+  animation-name: blow_134;
+}
+@keyframes blow_134 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 59vw;
+    top: 27vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_135 {
+  animation-name: blow_135;
+}
+@keyframes blow_135 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 22vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_136 {
+  animation-name: blow_136;
+}
+@keyframes blow_136 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 74vw;
+    top: 56vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_137 {
+  animation-name: blow_137;
+}
+@keyframes blow_137 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_138 {
+  animation-name: blow_138;
+}
+@keyframes blow_138 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 91vw;
+    top: 32vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_139 {
+  animation-name: blow_139;
+}
+@keyframes blow_139 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 48vw;
+    top: 35vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_140 {
+  animation-name: blow_140;
+}
+@keyframes blow_140 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 15vw;
+    top: 42vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_141 {
+  animation-name: blow_141;
+}
+@keyframes blow_141 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 58vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_142 {
+  animation-name: blow_142;
+}
+@keyframes blow_142 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 85vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_143 {
+  animation-name: blow_143;
+}
+@keyframes blow_143 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 81vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_144 {
+  animation-name: blow_144;
+}
+@keyframes blow_144 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 82vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_145 {
+  animation-name: blow_145;
+}
+@keyframes blow_145 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 65vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_146 {
+  animation-name: blow_146;
+}
+@keyframes blow_146 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 44vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_147 {
+  animation-name: blow_147;
+}
+@keyframes blow_147 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 14vw;
+    top: 23vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_148 {
+  animation-name: blow_148;
+}
+@keyframes blow_148 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 56vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_149 {
+  animation-name: blow_149;
+}
+@keyframes blow_149 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_150 {
+  animation-name: blow_150;
+}
+@keyframes blow_150 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 16vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_151 {
+  animation-name: blow_151;
+}
+@keyframes blow_151 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 58vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_152 {
+  animation-name: blow_152;
+}
+@keyframes blow_152 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 73vw;
+    top: 9vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_153 {
+  animation-name: blow_153;
+}
+@keyframes blow_153 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 32vw;
+    top: 81vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_154 {
+  animation-name: blow_154;
+}
+@keyframes blow_154 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 21vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_155 {
+  animation-name: blow_155;
+}
+@keyframes blow_155 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 59vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_156 {
+  animation-name: blow_156;
+}
+@keyframes blow_156 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 78vw;
+    top: 70vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_157 {
+  animation-name: blow_157;
+}
+@keyframes blow_157 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 32vw;
+    top: 30vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_158 {
+  animation-name: blow_158;
+}
+@keyframes blow_158 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_159 {
+  animation-name: blow_159;
+}
+@keyframes blow_159 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 89vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_160 {
+  animation-name: blow_160;
+}
+@keyframes blow_160 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 9vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_161 {
+  animation-name: blow_161;
+}
+@keyframes blow_161 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 69vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_162 {
+  animation-name: blow_162;
+}
+@keyframes blow_162 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 50vw;
+    top: 69vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_163 {
+  animation-name: blow_163;
+}
+@keyframes blow_163 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 21vw;
+    top: 42vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_164 {
+  animation-name: blow_164;
+}
+@keyframes blow_164 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 30vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_165 {
+  animation-name: blow_165;
+}
+@keyframes blow_165 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 4vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_166 {
+  animation-name: blow_166;
+}
+@keyframes blow_166 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 50vw;
+    top: 14vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_167 {
+  animation-name: blow_167;
+}
+@keyframes blow_167 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 53vw;
+    top: 14vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_168 {
+  animation-name: blow_168;
+}
+@keyframes blow_168 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 5vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_169 {
+  animation-name: blow_169;
+}
+@keyframes blow_169 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 71vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_170 {
+  animation-name: blow_170;
+}
+@keyframes blow_170 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 52vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_171 {
+  animation-name: blow_171;
+}
+@keyframes blow_171 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 5vw;
+    top: 27vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_172 {
+  animation-name: blow_172;
+}
+@keyframes blow_172 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 43vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_173 {
+  animation-name: blow_173;
+}
+@keyframes blow_173 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 35vw;
+    top: 8vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_174 {
+  animation-name: blow_174;
+}
+@keyframes blow_174 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 48vw;
+    top: 60vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_175 {
+  animation-name: blow_175;
+}
+@keyframes blow_175 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 28vw;
+    top: 67vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_176 {
+  animation-name: blow_176;
+}
+@keyframes blow_176 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 56vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_177 {
+  animation-name: blow_177;
+}
+@keyframes blow_177 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 61vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_178 {
+  animation-name: blow_178;
+}
+@keyframes blow_178 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 28vw;
+    top: 21vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_179 {
+  animation-name: blow_179;
+}
+@keyframes blow_179 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 39vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_180 {
+  animation-name: blow_180;
+}
+@keyframes blow_180 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 25vw;
+    top: 29vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_181 {
+  animation-name: blow_181;
+}
+@keyframes blow_181 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_182 {
+  animation-name: blow_182;
+}
+@keyframes blow_182 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 5vw;
+    top: 22vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_183 {
+  animation-name: blow_183;
+}
+@keyframes blow_183 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 29vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_184 {
+  animation-name: blow_184;
+}
+@keyframes blow_184 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 89vw;
+    top: 39vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_185 {
+  animation-name: blow_185;
+}
+@keyframes blow_185 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 55vw;
+    top: 19vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_186 {
+  animation-name: blow_186;
+}
+@keyframes blow_186 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 5vw;
+    top: 57vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_187 {
+  animation-name: blow_187;
+}
+@keyframes blow_187 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 91vw;
+    top: 89vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_188 {
+  animation-name: blow_188;
+}
+@keyframes blow_188 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 22vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_189 {
+  animation-name: blow_189;
+}
+@keyframes blow_189 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_190 {
+  animation-name: blow_190;
+}
+@keyframes blow_190 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 74vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_191 {
+  animation-name: blow_191;
+}
+@keyframes blow_191 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 9vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_192 {
+  animation-name: blow_192;
+}
+@keyframes blow_192 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 41vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_193 {
+  animation-name: blow_193;
+}
+@keyframes blow_193 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_194 {
+  animation-name: blow_194;
+}
+@keyframes blow_194 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 76vw;
+    top: 23vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_195 {
+  animation-name: blow_195;
+}
+@keyframes blow_195 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 7vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_196 {
+  animation-name: blow_196;
+}
+@keyframes blow_196 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 34vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_197 {
+  animation-name: blow_197;
+}
+@keyframes blow_197 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 42vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_198 {
+  animation-name: blow_198;
+}
+@keyframes blow_198 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 23vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_199 {
+  animation-name: blow_199;
+}
+@keyframes blow_199 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 31vw;
+    top: 82vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_200 {
+  animation-name: blow_200;
+}
+@keyframes blow_200 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    left: 2vw;
+    top: 76vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_201 {
+  animation-name: blow_201;
+}
+@keyframes blow_201 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 10vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_202 {
+  animation-name: blow_202;
+}
+@keyframes blow_202 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_203 {
+  animation-name: blow_203;
+}
+@keyframes blow_203 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 16vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_204 {
+  animation-name: blow_204;
+}
+@keyframes blow_204 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 12vw;
+    top: 6vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_205 {
+  animation-name: blow_205;
+}
+@keyframes blow_205 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 78vw;
+    top: 52vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_206 {
+  animation-name: blow_206;
+}
+@keyframes blow_206 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 56vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_207 {
+  animation-name: blow_207;
+}
+@keyframes blow_207 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 13vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_208 {
+  animation-name: blow_208;
+}
+@keyframes blow_208 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 25vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_209 {
+  animation-name: blow_209;
+}
+@keyframes blow_209 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 57vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_210 {
+  animation-name: blow_210;
+}
+@keyframes blow_210 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 63vw;
+    top: 65vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_211 {
+  animation-name: blow_211;
+}
+@keyframes blow_211 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 50vw;
+    top: 52vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_212 {
+  animation-name: blow_212;
+}
+@keyframes blow_212 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 62vw;
+    top: 70vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_213 {
+  animation-name: blow_213;
+}
+@keyframes blow_213 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 13vw;
+    top: 54vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_214 {
+  animation-name: blow_214;
+}
+@keyframes blow_214 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 14vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_215 {
+  animation-name: blow_215;
+}
+@keyframes blow_215 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 40vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_216 {
+  animation-name: blow_216;
+}
+@keyframes blow_216 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 56vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_217 {
+  animation-name: blow_217;
+}
+@keyframes blow_217 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 38vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_218 {
+  animation-name: blow_218;
+}
+@keyframes blow_218 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 59vw;
+    top: 72vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_219 {
+  animation-name: blow_219;
+}
+@keyframes blow_219 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 21vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_220 {
+  animation-name: blow_220;
+}
+@keyframes blow_220 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 28vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_221 {
+  animation-name: blow_221;
+}
+@keyframes blow_221 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 36vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_222 {
+  animation-name: blow_222;
+}
+@keyframes blow_222 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 65vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_223 {
+  animation-name: blow_223;
+}
+@keyframes blow_223 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 83vw;
+    top: 85vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_224 {
+  animation-name: blow_224;
+}
+@keyframes blow_224 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 89vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_225 {
+  animation-name: blow_225;
+}
+@keyframes blow_225 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 63vw;
+    top: 67vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_226 {
+  animation-name: blow_226;
+}
+@keyframes blow_226 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 55vw;
+    top: 13vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_227 {
+  animation-name: blow_227;
+}
+@keyframes blow_227 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 65vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_228 {
+  animation-name: blow_228;
+}
+@keyframes blow_228 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_229 {
+  animation-name: blow_229;
+}
+@keyframes blow_229 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 35vw;
+    top: 53vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_230 {
+  animation-name: blow_230;
+}
+@keyframes blow_230 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 5vw;
+    top: 5vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_231 {
+  animation-name: blow_231;
+}
+@keyframes blow_231 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 30vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_232 {
+  animation-name: blow_232;
+}
+@keyframes blow_232 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 26vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_233 {
+  animation-name: blow_233;
+}
+@keyframes blow_233 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 83vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_234 {
+  animation-name: blow_234;
+}
+@keyframes blow_234 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 22vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_235 {
+  animation-name: blow_235;
+}
+@keyframes blow_235 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_236 {
+  animation-name: blow_236;
+}
+@keyframes blow_236 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 26vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_237 {
+  animation-name: blow_237;
+}
+@keyframes blow_237 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 36vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_238 {
+  animation-name: blow_238;
+}
+@keyframes blow_238 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 98vw;
+    top: 8vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_239 {
+  animation-name: blow_239;
+}
+@keyframes blow_239 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 69vw;
+    top: 51vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_240 {
+  animation-name: blow_240;
+}
+@keyframes blow_240 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 62vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_241 {
+  animation-name: blow_241;
+}
+@keyframes blow_241 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 48vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_242 {
+  animation-name: blow_242;
+}
+@keyframes blow_242 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 19vw;
+    top: 65vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_243 {
+  animation-name: blow_243;
+}
+@keyframes blow_243 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 59vw;
+    top: 30vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_244 {
+  animation-name: blow_244;
+}
+@keyframes blow_244 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 36vw;
+    top: 71vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_245 {
+  animation-name: blow_245;
+}
+@keyframes blow_245 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 81vw;
+    top: 85vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_246 {
+  animation-name: blow_246;
+}
+@keyframes blow_246 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 28vw;
+    top: 40vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_247 {
+  animation-name: blow_247;
+}
+@keyframes blow_247 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 24vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_248 {
+  animation-name: blow_248;
+}
+@keyframes blow_248 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 19vw;
+    top: 53vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_249 {
+  animation-name: blow_249;
+}
+@keyframes blow_249 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 87vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_250 {
+  animation-name: blow_250;
+}
+@keyframes blow_250 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 88vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_251 {
+  animation-name: blow_251;
+}
+@keyframes blow_251 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 50vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_252 {
+  animation-name: blow_252;
+}
+@keyframes blow_252 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 54vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_253 {
+  animation-name: blow_253;
+}
+@keyframes blow_253 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 71vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_254 {
+  animation-name: blow_254;
+}
+@keyframes blow_254 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 79vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_255 {
+  animation-name: blow_255;
+}
+@keyframes blow_255 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 15vw;
+    top: 67vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_256 {
+  animation-name: blow_256;
+}
+@keyframes blow_256 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 69vw;
+    top: 80vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_257 {
+  animation-name: blow_257;
+}
+@keyframes blow_257 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 62vw;
+    top: 27vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_258 {
+  animation-name: blow_258;
+}
+@keyframes blow_258 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 10vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_259 {
+  animation-name: blow_259;
+}
+@keyframes blow_259 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 71vw;
+    top: 61vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_260 {
+  animation-name: blow_260;
+}
+@keyframes blow_260 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_261 {
+  animation-name: blow_261;
+}
+@keyframes blow_261 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 45vw;
+    top: 39vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_262 {
+  animation-name: blow_262;
+}
+@keyframes blow_262 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 70vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_263 {
+  animation-name: blow_263;
+}
+@keyframes blow_263 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 4vw;
+    top: 25vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_264 {
+  animation-name: blow_264;
+}
+@keyframes blow_264 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_265 {
+  animation-name: blow_265;
+}
+@keyframes blow_265 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 86vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_266 {
+  animation-name: blow_266;
+}
+@keyframes blow_266 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 76vw;
+    top: 7vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_267 {
+  animation-name: blow_267;
+}
+@keyframes blow_267 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 33vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_268 {
+  animation-name: blow_268;
+}
+@keyframes blow_268 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 41vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_269 {
+  animation-name: blow_269;
+}
+@keyframes blow_269 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 38vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_270 {
+  animation-name: blow_270;
+}
+@keyframes blow_270 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 59vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_271 {
+  animation-name: blow_271;
+}
+@keyframes blow_271 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 36vw;
+    top: 49vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_272 {
+  animation-name: blow_272;
+}
+@keyframes blow_272 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 20vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_273 {
+  animation-name: blow_273;
+}
+@keyframes blow_273 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 21vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_274 {
+  animation-name: blow_274;
+}
+@keyframes blow_274 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 13vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_275 {
+  animation-name: blow_275;
+}
+@keyframes blow_275 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 19vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_276 {
+  animation-name: blow_276;
+}
+@keyframes blow_276 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 67vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_277 {
+  animation-name: blow_277;
+}
+@keyframes blow_277 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 85vw;
+    top: 71vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_278 {
+  animation-name: blow_278;
+}
+@keyframes blow_278 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 36vw;
+    top: 72vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_279 {
+  animation-name: blow_279;
+}
+@keyframes blow_279 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 22vw;
+    top: 58vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_280 {
+  animation-name: blow_280;
+}
+@keyframes blow_280 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 21vw;
+    top: 8vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_281 {
+  animation-name: blow_281;
+}
+@keyframes blow_281 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 3vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_282 {
+  animation-name: blow_282;
+}
+@keyframes blow_282 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 38vw;
+    top: 62vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_283 {
+  animation-name: blow_283;
+}
+@keyframes blow_283 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 17vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_284 {
+  animation-name: blow_284;
+}
+@keyframes blow_284 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 38vw;
+    top: 68vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_285 {
+  animation-name: blow_285;
+}
+@keyframes blow_285 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 36vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_286 {
+  animation-name: blow_286;
+}
+@keyframes blow_286 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 98vw;
+    top: 18vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_287 {
+  animation-name: blow_287;
+}
+@keyframes blow_287 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 5vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_288 {
+  animation-name: blow_288;
+}
+@keyframes blow_288 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 66vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_289 {
+  animation-name: blow_289;
+}
+@keyframes blow_289 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 2vw;
+    top: 7vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_290 {
+  animation-name: blow_290;
+}
+@keyframes blow_290 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_291 {
+  animation-name: blow_291;
+}
+@keyframes blow_291 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 21vw;
+    top: 89vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_292 {
+  animation-name: blow_292;
+}
+@keyframes blow_292 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 42vw;
+    top: 82vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_293 {
+  animation-name: blow_293;
+}
+@keyframes blow_293 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 12vw;
+    top: 64vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_294 {
+  animation-name: blow_294;
+}
+@keyframes blow_294 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 38vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_295 {
+  animation-name: blow_295;
+}
+@keyframes blow_295 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 1vw;
+    top: 51vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_296 {
+  animation-name: blow_296;
+}
+@keyframes blow_296 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 74vw;
+    top: 54vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_297 {
+  animation-name: blow_297;
+}
+@keyframes blow_297 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 58vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_298 {
+  animation-name: blow_298;
+}
+@keyframes blow_298 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 26vw;
+    top: 8vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_299 {
+  animation-name: blow_299;
+}
+@keyframes blow_299 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 1vw;
+    top: 2vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_300 {
+  animation-name: blow_300;
+}
+@keyframes blow_300 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 79vh;
+    opacity: 1;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_301 {
+  animation-name: blow_301;
+}
+@keyframes blow_301 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 78vw;
+    top: 66vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_302 {
+  animation-name: blow_302;
+}
+@keyframes blow_302 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 79vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_303 {
+  animation-name: blow_303;
+}
+@keyframes blow_303 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 39vw;
+    top: 23vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_304 {
+  animation-name: blow_304;
+}
+@keyframes blow_304 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 96vw;
+    top: 79vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_305 {
+  animation-name: blow_305;
+}
+@keyframes blow_305 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 55vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_306 {
+  animation-name: blow_306;
+}
+@keyframes blow_306 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 94vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_307 {
+  animation-name: blow_307;
+}
+@keyframes blow_307 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 53vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_308 {
+  animation-name: blow_308;
+}
+@keyframes blow_308 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 74vw;
+    top: 6vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_309 {
+  animation-name: blow_309;
+}
+@keyframes blow_309 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 94vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_310 {
+  animation-name: blow_310;
+}
+@keyframes blow_310 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 53vw;
+    top: 52vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_311 {
+  animation-name: blow_311;
+}
+@keyframes blow_311 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 59vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_312 {
+  animation-name: blow_312;
+}
+@keyframes blow_312 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 20vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_313 {
+  animation-name: blow_313;
+}
+@keyframes blow_313 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 59vw;
+    top: 9vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_314 {
+  animation-name: blow_314;
+}
+@keyframes blow_314 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 42vw;
+    top: 91vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_315 {
+  animation-name: blow_315;
+}
+@keyframes blow_315 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 14vw;
+    top: 25vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_316 {
+  animation-name: blow_316;
+}
+@keyframes blow_316 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 35vw;
+    top: 89vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_317 {
+  animation-name: blow_317;
+}
+@keyframes blow_317 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 75vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_318 {
+  animation-name: blow_318;
+}
+@keyframes blow_318 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 49vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_319 {
+  animation-name: blow_319;
+}
+@keyframes blow_319 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 85vw;
+    top: 38vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_320 {
+  animation-name: blow_320;
+}
+@keyframes blow_320 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 26vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_321 {
+  animation-name: blow_321;
+}
+@keyframes blow_321 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 67vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_322 {
+  animation-name: blow_322;
+}
+@keyframes blow_322 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 35vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_323 {
+  animation-name: blow_323;
+}
+@keyframes blow_323 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 83vw;
+    top: 18vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_324 {
+  animation-name: blow_324;
+}
+@keyframes blow_324 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 14vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_325 {
+  animation-name: blow_325;
+}
+@keyframes blow_325 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 65vw;
+    top: 74vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_326 {
+  animation-name: blow_326;
+}
+@keyframes blow_326 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 18vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_327 {
+  animation-name: blow_327;
+}
+@keyframes blow_327 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 11vw;
+    top: 34vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_328 {
+  animation-name: blow_328;
+}
+@keyframes blow_328 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 43vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_329 {
+  animation-name: blow_329;
+}
+@keyframes blow_329 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 54vw;
+    top: 98vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_330 {
+  animation-name: blow_330;
+}
+@keyframes blow_330 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 21vw;
+    top: 75vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_331 {
+  animation-name: blow_331;
+}
+@keyframes blow_331 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 9vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_332 {
+  animation-name: blow_332;
+}
+@keyframes blow_332 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 86vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_333 {
+  animation-name: blow_333;
+}
+@keyframes blow_333 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 19vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_334 {
+  animation-name: blow_334;
+}
+@keyframes blow_334 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 52vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_335 {
+  animation-name: blow_335;
+}
+@keyframes blow_335 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 65vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_336 {
+  animation-name: blow_336;
+}
+@keyframes blow_336 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 23vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_337 {
+  animation-name: blow_337;
+}
+@keyframes blow_337 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 41vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_338 {
+  animation-name: blow_338;
+}
+@keyframes blow_338 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 36vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_339 {
+  animation-name: blow_339;
+}
+@keyframes blow_339 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 54vw;
+    top: 7vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_340 {
+  animation-name: blow_340;
+}
+@keyframes blow_340 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 37vw;
+    top: 55vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_341 {
+  animation-name: blow_341;
+}
+@keyframes blow_341 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 85vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_342 {
+  animation-name: blow_342;
+}
+@keyframes blow_342 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 95vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_343 {
+  animation-name: blow_343;
+}
+@keyframes blow_343 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 42vw;
+    top: 9vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_344 {
+  animation-name: blow_344;
+}
+@keyframes blow_344 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 64vw;
+    top: 93vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_345 {
+  animation-name: blow_345;
+}
+@keyframes blow_345 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 24vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_346 {
+  animation-name: blow_346;
+}
+@keyframes blow_346 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 48vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_347 {
+  animation-name: blow_347;
+}
+@keyframes blow_347 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 95vw;
+    top: 22vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_348 {
+  animation-name: blow_348;
+}
+@keyframes blow_348 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 81vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_349 {
+  animation-name: blow_349;
+}
+@keyframes blow_349 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 3vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_350 {
+  animation-name: blow_350;
+}
+@keyframes blow_350 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 19vw;
+    top: 55vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_351 {
+  animation-name: blow_351;
+}
+@keyframes blow_351 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 80vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_352 {
+  animation-name: blow_352;
+}
+@keyframes blow_352 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 87vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_353 {
+  animation-name: blow_353;
+}
+@keyframes blow_353 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 5vw;
+    top: 74vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_354 {
+  animation-name: blow_354;
+}
+@keyframes blow_354 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 74vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_355 {
+  animation-name: blow_355;
+}
+@keyframes blow_355 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 86vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_356 {
+  animation-name: blow_356;
+}
+@keyframes blow_356 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 72vw;
+    top: 24vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_357 {
+  animation-name: blow_357;
+}
+@keyframes blow_357 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 50vw;
+    top: 2vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_358 {
+  animation-name: blow_358;
+}
+@keyframes blow_358 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 60vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_359 {
+  animation-name: blow_359;
+}
+@keyframes blow_359 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 95vw;
+    top: 79vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_360 {
+  animation-name: blow_360;
+}
+@keyframes blow_360 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 48vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_361 {
+  animation-name: blow_361;
+}
+@keyframes blow_361 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 61vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_362 {
+  animation-name: blow_362;
+}
+@keyframes blow_362 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 46vw;
+    top: 74vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_363 {
+  animation-name: blow_363;
+}
+@keyframes blow_363 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 88vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_364 {
+  animation-name: blow_364;
+}
+@keyframes blow_364 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 48vw;
+    top: 6vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_365 {
+  animation-name: blow_365;
+}
+@keyframes blow_365 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 46vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_366 {
+  animation-name: blow_366;
+}
+@keyframes blow_366 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 46vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_367 {
+  animation-name: blow_367;
+}
+@keyframes blow_367 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 49vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_368 {
+  animation-name: blow_368;
+}
+@keyframes blow_368 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 35vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_369 {
+  animation-name: blow_369;
+}
+@keyframes blow_369 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 86vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_370 {
+  animation-name: blow_370;
+}
+@keyframes blow_370 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 25vw;
+    top: 54vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_371 {
+  animation-name: blow_371;
+}
+@keyframes blow_371 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 4vw;
+    top: 58vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_372 {
+  animation-name: blow_372;
+}
+@keyframes blow_372 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 27vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_373 {
+  animation-name: blow_373;
+}
+@keyframes blow_373 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 68vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_374 {
+  animation-name: blow_374;
+}
+@keyframes blow_374 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 13vw;
+    top: 32vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_375 {
+  animation-name: blow_375;
+}
+@keyframes blow_375 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 60vw;
+    top: 2vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_376 {
+  animation-name: blow_376;
+}
+@keyframes blow_376 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 42vw;
+    top: 71vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_377 {
+  animation-name: blow_377;
+}
+@keyframes blow_377 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 17vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_378 {
+  animation-name: blow_378;
+}
+@keyframes blow_378 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 26vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_379 {
+  animation-name: blow_379;
+}
+@keyframes blow_379 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 43vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_380 {
+  animation-name: blow_380;
+}
+@keyframes blow_380 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 57vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_381 {
+  animation-name: blow_381;
+}
+@keyframes blow_381 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 83vw;
+    top: 38vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_382 {
+  animation-name: blow_382;
+}
+@keyframes blow_382 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 32vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_383 {
+  animation-name: blow_383;
+}
+@keyframes blow_383 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 89vw;
+    top: 3vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_384 {
+  animation-name: blow_384;
+}
+@keyframes blow_384 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 92vw;
+    top: 8vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_385 {
+  animation-name: blow_385;
+}
+@keyframes blow_385 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 97vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_386 {
+  animation-name: blow_386;
+}
+@keyframes blow_386 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 11vw;
+    top: 42vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_387 {
+  animation-name: blow_387;
+}
+@keyframes blow_387 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 77vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_388 {
+  animation-name: blow_388;
+}
+@keyframes blow_388 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 15vw;
+    top: 39vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_389 {
+  animation-name: blow_389;
+}
+@keyframes blow_389 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 4vw;
+    top: 11vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_390 {
+  animation-name: blow_390;
+}
+@keyframes blow_390 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 46vw;
+    top: 6vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_391 {
+  animation-name: blow_391;
+}
+@keyframes blow_391 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 76vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_392 {
+  animation-name: blow_392;
+}
+@keyframes blow_392 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 38vw;
+    top: 2vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_393 {
+  animation-name: blow_393;
+}
+@keyframes blow_393 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 23vw;
+    top: 10vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_394 {
+  animation-name: blow_394;
+}
+@keyframes blow_394 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 99vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_395 {
+  animation-name: blow_395;
+}
+@keyframes blow_395 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 77vw;
+    top: 15vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_396 {
+  animation-name: blow_396;
+}
+@keyframes blow_396 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 52vw;
+    top: 68vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_397 {
+  animation-name: blow_397;
+}
+@keyframes blow_397 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 69vw;
+    top: 34vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_398 {
+  animation-name: blow_398;
+}
+@keyframes blow_398 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 71vw;
+    top: 94vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_399 {
+  animation-name: blow_399;
+}
+@keyframes blow_399 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 77vw;
+    top: 30vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_400 {
+  animation-name: blow_400;
+}
+@keyframes blow_400 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 37vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_401 {
+  animation-name: blow_401;
+}
+@keyframes blow_401 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 55vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_402 {
+  animation-name: blow_402;
+}
+@keyframes blow_402 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 63vw;
+    top: 88vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_403 {
+  animation-name: blow_403;
+}
+@keyframes blow_403 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 62vw;
+    top: 18vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_404 {
+  animation-name: blow_404;
+}
+@keyframes blow_404 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 74vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_405 {
+  animation-name: blow_405;
+}
+@keyframes blow_405 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 74vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_406 {
+  animation-name: blow_406;
+}
+@keyframes blow_406 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 21vw;
+    top: 5vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_407 {
+  animation-name: blow_407;
+}
+@keyframes blow_407 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 40vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_408 {
+  animation-name: blow_408;
+}
+@keyframes blow_408 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 75vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_409 {
+  animation-name: blow_409;
+}
+@keyframes blow_409 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 17vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_410 {
+  animation-name: blow_410;
+}
+@keyframes blow_410 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 21vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_411 {
+  animation-name: blow_411;
+}
+@keyframes blow_411 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 42vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_412 {
+  animation-name: blow_412;
+}
+@keyframes blow_412 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 57vw;
+    top: 12vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_413 {
+  animation-name: blow_413;
+}
+@keyframes blow_413 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 98vw;
+    top: 29vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_414 {
+  animation-name: blow_414;
+}
+@keyframes blow_414 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 19vw;
+    top: 77vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_415 {
+  animation-name: blow_415;
+}
+@keyframes blow_415 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 53vw;
+    top: 90vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_416 {
+  animation-name: blow_416;
+}
+@keyframes blow_416 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 70vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_417 {
+  animation-name: blow_417;
+}
+@keyframes blow_417 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 98vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_418 {
+  animation-name: blow_418;
+}
+@keyframes blow_418 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 26vw;
+    top: 52vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_419 {
+  animation-name: blow_419;
+}
+@keyframes blow_419 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 69vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_420 {
+  animation-name: blow_420;
+}
+@keyframes blow_420 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 7vw;
+    top: 26vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_421 {
+  animation-name: blow_421;
+}
+@keyframes blow_421 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 13vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_422 {
+  animation-name: blow_422;
+}
+@keyframes blow_422 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 99vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_423 {
+  animation-name: blow_423;
+}
+@keyframes blow_423 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 85vw;
+    top: 82vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_424 {
+  animation-name: blow_424;
+}
+@keyframes blow_424 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 45vw;
+    top: 40vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_425 {
+  animation-name: blow_425;
+}
+@keyframes blow_425 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 73vw;
+    top: 49vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_426 {
+  animation-name: blow_426;
+}
+@keyframes blow_426 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 67vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_427 {
+  animation-name: blow_427;
+}
+@keyframes blow_427 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 71vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_428 {
+  animation-name: blow_428;
+}
+@keyframes blow_428 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 69vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_429 {
+  animation-name: blow_429;
+}
+@keyframes blow_429 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 25vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_430 {
+  animation-name: blow_430;
+}
+@keyframes blow_430 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 77vw;
+    top: 72vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_431 {
+  animation-name: blow_431;
+}
+@keyframes blow_431 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 10vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_432 {
+  animation-name: blow_432;
+}
+@keyframes blow_432 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 8vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_433 {
+  animation-name: blow_433;
+}
+@keyframes blow_433 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 50vw;
+    top: 84vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_434 {
+  animation-name: blow_434;
+}
+@keyframes blow_434 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 46vw;
+    top: 17vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_435 {
+  animation-name: blow_435;
+}
+@keyframes blow_435 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 76vw;
+    top: 5vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_436 {
+  animation-name: blow_436;
+}
+@keyframes blow_436 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 27vw;
+    top: 91vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_437 {
+  animation-name: blow_437;
+}
+@keyframes blow_437 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 12vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_438 {
+  animation-name: blow_438;
+}
+@keyframes blow_438 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 54vw;
+    top: 65vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_439 {
+  animation-name: blow_439;
+}
+@keyframes blow_439 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 2vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_440 {
+  animation-name: blow_440;
+}
+@keyframes blow_440 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 15vw;
+    top: 48vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_441 {
+  animation-name: blow_441;
+}
+@keyframes blow_441 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 55vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_442 {
+  animation-name: blow_442;
+}
+@keyframes blow_442 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 72vw;
+    top: 22vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_443 {
+  animation-name: blow_443;
+}
+@keyframes blow_443 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 38vw;
+    top: 86vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_444 {
+  animation-name: blow_444;
+}
+@keyframes blow_444 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 73vw;
+    top: 34vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_445 {
+  animation-name: blow_445;
+}
+@keyframes blow_445 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 83vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_446 {
+  animation-name: blow_446;
+}
+@keyframes blow_446 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 14vw;
+    top: 28vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_447 {
+  animation-name: blow_447;
+}
+@keyframes blow_447 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 66vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_448 {
+  animation-name: blow_448;
+}
+@keyframes blow_448 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 38vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_449 {
+  animation-name: blow_449;
+}
+@keyframes blow_449 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 42vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_450 {
+  animation-name: blow_450;
+}
+@keyframes blow_450 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 28vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_451 {
+  animation-name: blow_451;
+}
+@keyframes blow_451 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 10vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_452 {
+  animation-name: blow_452;
+}
+@keyframes blow_452 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 79vw;
+    top: 63vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_453 {
+  animation-name: blow_453;
+}
+@keyframes blow_453 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 23vw;
+    top: 71vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_454 {
+  animation-name: blow_454;
+}
+@keyframes blow_454 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 7vw;
+    top: 11vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_455 {
+  animation-name: blow_455;
+}
+@keyframes blow_455 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 4vw;
+    top: 23vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_456 {
+  animation-name: blow_456;
+}
+@keyframes blow_456 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 64vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_457 {
+  animation-name: blow_457;
+}
+@keyframes blow_457 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 36vw;
+    top: 2vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_458 {
+  animation-name: blow_458;
+}
+@keyframes blow_458 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 99vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_459 {
+  animation-name: blow_459;
+}
+@keyframes blow_459 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 86vw;
+    top: 85vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_460 {
+  animation-name: blow_460;
+}
+@keyframes blow_460 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 74vw;
+    top: 72vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_461 {
+  animation-name: blow_461;
+}
+@keyframes blow_461 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 55vw;
+    top: 63vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_462 {
+  animation-name: blow_462;
+}
+@keyframes blow_462 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 55vw;
+    top: 89vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_463 {
+  animation-name: blow_463;
+}
+@keyframes blow_463 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 43vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_464 {
+  animation-name: blow_464;
+}
+@keyframes blow_464 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 22vw;
+    top: 21vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_465 {
+  animation-name: blow_465;
+}
+@keyframes blow_465 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 42vw;
+    top: 14vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_466 {
+  animation-name: blow_466;
+}
+@keyframes blow_466 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 43vw;
+    top: 49vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_467 {
+  animation-name: blow_467;
+}
+@keyframes blow_467 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 83vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_468 {
+  animation-name: blow_468;
+}
+@keyframes blow_468 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 32vw;
+    top: 15vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_469 {
+  animation-name: blow_469;
+}
+@keyframes blow_469 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 64vw;
+    top: 51vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_470 {
+  animation-name: blow_470;
+}
+@keyframes blow_470 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 58vw;
+    top: 47vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_471 {
+  animation-name: blow_471;
+}
+@keyframes blow_471 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 23vw;
+    top: 78vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_472 {
+  animation-name: blow_472;
+}
+@keyframes blow_472 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 71vw;
+    top: 99vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_473 {
+  animation-name: blow_473;
+}
+@keyframes blow_473 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 36vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_474 {
+  animation-name: blow_474;
+}
+@keyframes blow_474 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 49vw;
+    top: 65vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_475 {
+  animation-name: blow_475;
+}
+@keyframes blow_475 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 60vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_476 {
+  animation-name: blow_476;
+}
+@keyframes blow_476 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 2vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_477 {
+  animation-name: blow_477;
+}
+@keyframes blow_477 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 72vw;
+    top: 10vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_478 {
+  animation-name: blow_478;
+}
+@keyframes blow_478 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 45vw;
+    top: 63vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_479 {
+  animation-name: blow_479;
+}
+@keyframes blow_479 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 100vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_480 {
+  animation-name: blow_480;
+}
+@keyframes blow_480 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 18vw;
+    top: 94vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_481 {
+  animation-name: blow_481;
+}
+@keyframes blow_481 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 36vw;
+    top: 15vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_482 {
+  animation-name: blow_482;
+}
+@keyframes blow_482 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 68vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_483 {
+  animation-name: blow_483;
+}
+@keyframes blow_483 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 7vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_484 {
+  animation-name: blow_484;
+}
+@keyframes blow_484 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 72vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_485 {
+  animation-name: blow_485;
+}
+@keyframes blow_485 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 73vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_486 {
+  animation-name: blow_486;
+}
+@keyframes blow_486 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 86vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_487 {
+  animation-name: blow_487;
+}
+@keyframes blow_487 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 45vw;
+    top: 29vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_488 {
+  animation-name: blow_488;
+}
+@keyframes blow_488 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 26vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_489 {
+  animation-name: blow_489;
+}
+@keyframes blow_489 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 74vw;
+    top: 45vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_490 {
+  animation-name: blow_490;
+}
+@keyframes blow_490 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 66vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_491 {
+  animation-name: blow_491;
+}
+@keyframes blow_491 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 61vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_492 {
+  animation-name: blow_492;
+}
+@keyframes blow_492 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 94vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_493 {
+  animation-name: blow_493;
+}
+@keyframes blow_493 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 33vw;
+    top: 35vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_494 {
+  animation-name: blow_494;
+}
+@keyframes blow_494 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 91vw;
+    top: 86vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_495 {
+  animation-name: blow_495;
+}
+@keyframes blow_495 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 33vw;
+    top: 8vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_496 {
+  animation-name: blow_496;
+}
+@keyframes blow_496 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 35vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_497 {
+  animation-name: blow_497;
+}
+@keyframes blow_497 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 47vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_498 {
+  animation-name: blow_498;
+}
+@keyframes blow_498 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 33vw;
+    top: 30vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_499 {
+  animation-name: blow_499;
+}
+@keyframes blow_499 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 4vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_500 {
+  animation-name: blow_500;
+}
+@keyframes blow_500 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 30vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_501 {
+  animation-name: blow_501;
+}
+@keyframes blow_501 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 94vw;
+    top: 39vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_502 {
+  animation-name: blow_502;
+}
+@keyframes blow_502 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 66vw;
+    top: 18vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_503 {
+  animation-name: blow_503;
+}
+@keyframes blow_503 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 33vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_504 {
+  animation-name: blow_504;
+}
+@keyframes blow_504 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 63vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_505 {
+  animation-name: blow_505;
+}
+@keyframes blow_505 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 71vw;
+    top: 8vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_506 {
+  animation-name: blow_506;
+}
+@keyframes blow_506 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 70vw;
+    top: 46vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_507 {
+  animation-name: blow_507;
+}
+@keyframes blow_507 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 60vw;
+    top: 16vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_508 {
+  animation-name: blow_508;
+}
+@keyframes blow_508 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 11vw;
+    top: 60vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_509 {
+  animation-name: blow_509;
+}
+@keyframes blow_509 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 64vw;
+    top: 40vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_510 {
+  animation-name: blow_510;
+}
+@keyframes blow_510 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 69vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_511 {
+  animation-name: blow_511;
+}
+@keyframes blow_511 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 17vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_512 {
+  animation-name: blow_512;
+}
+@keyframes blow_512 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 15vw;
+    top: 29vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_513 {
+  animation-name: blow_513;
+}
+@keyframes blow_513 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 51vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_514 {
+  animation-name: blow_514;
+}
+@keyframes blow_514 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 6vw;
+    top: 21vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_515 {
+  animation-name: blow_515;
+}
+@keyframes blow_515 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 43vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_516 {
+  animation-name: blow_516;
+}
+@keyframes blow_516 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 89vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_517 {
+  animation-name: blow_517;
+}
+@keyframes blow_517 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 84vw;
+    top: 14vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_518 {
+  animation-name: blow_518;
+}
+@keyframes blow_518 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 78vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_519 {
+  animation-name: blow_519;
+}
+@keyframes blow_519 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 70vw;
+    top: 49vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_520 {
+  animation-name: blow_520;
+}
+@keyframes blow_520 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 68vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_521 {
+  animation-name: blow_521;
+}
+@keyframes blow_521 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 24vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_522 {
+  animation-name: blow_522;
+}
+@keyframes blow_522 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 17vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_523 {
+  animation-name: blow_523;
+}
+@keyframes blow_523 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 52vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_524 {
+  animation-name: blow_524;
+}
+@keyframes blow_524 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 84vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_525 {
+  animation-name: blow_525;
+}
+@keyframes blow_525 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 55vw;
+    top: 30vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_526 {
+  animation-name: blow_526;
+}
+@keyframes blow_526 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 99vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_527 {
+  animation-name: blow_527;
+}
+@keyframes blow_527 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 65vw;
+    top: 56vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_528 {
+  animation-name: blow_528;
+}
+@keyframes blow_528 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 75vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_529 {
+  animation-name: blow_529;
+}
+@keyframes blow_529 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 82vw;
+    top: 18vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_530 {
+  animation-name: blow_530;
+}
+@keyframes blow_530 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 13vw;
+    top: 88vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_531 {
+  animation-name: blow_531;
+}
+@keyframes blow_531 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 40vw;
+    top: 11vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_532 {
+  animation-name: blow_532;
+}
+@keyframes blow_532 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 60vw;
+    top: 12vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_533 {
+  animation-name: blow_533;
+}
+@keyframes blow_533 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 80vw;
+    top: 67vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_534 {
+  animation-name: blow_534;
+}
+@keyframes blow_534 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 70vw;
+    top: 52vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_535 {
+  animation-name: blow_535;
+}
+@keyframes blow_535 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 22vw;
+    top: 1vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_536 {
+  animation-name: blow_536;
+}
+@keyframes blow_536 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 19vw;
+    top: 21vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_537 {
+  animation-name: blow_537;
+}
+@keyframes blow_537 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 68vw;
+    top: 69vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_538 {
+  animation-name: blow_538;
+}
+@keyframes blow_538 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 93vw;
+    top: 88vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_539 {
+  animation-name: blow_539;
+}
+@keyframes blow_539 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 54vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_540 {
+  animation-name: blow_540;
+}
+@keyframes blow_540 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 23vw;
+    top: 18vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_541 {
+  animation-name: blow_541;
+}
+@keyframes blow_541 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 14vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_542 {
+  animation-name: blow_542;
+}
+@keyframes blow_542 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 53vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_543 {
+  animation-name: blow_543;
+}
+@keyframes blow_543 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 72vw;
+    top: 12vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_544 {
+  animation-name: blow_544;
+}
+@keyframes blow_544 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 9vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_545 {
+  animation-name: blow_545;
+}
+@keyframes blow_545 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 88vw;
+    top: 91vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_546 {
+  animation-name: blow_546;
+}
+@keyframes blow_546 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 92vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_547 {
+  animation-name: blow_547;
+}
+@keyframes blow_547 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 64vw;
+    top: 49vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_548 {
+  animation-name: blow_548;
+}
+@keyframes blow_548 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 23vw;
+    top: 67vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_549 {
+  animation-name: blow_549;
+}
+@keyframes blow_549 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 25vw;
+    top: 32vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_550 {
+  animation-name: blow_550;
+}
+@keyframes blow_550 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    top: 93vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_551 {
+  animation-name: blow_551;
+}
+@keyframes blow_551 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 53vw;
+    top: 82vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_552 {
+  animation-name: blow_552;
+}
+@keyframes blow_552 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 41vw;
+    top: 62vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_553 {
+  animation-name: blow_553;
+}
+@keyframes blow_553 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 8vw;
+    top: 72vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_554 {
+  animation-name: blow_554;
+}
+@keyframes blow_554 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 60vw;
+    top: 6vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_555 {
+  animation-name: blow_555;
+}
+@keyframes blow_555 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 57vw;
+    top: 38vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_556 {
+  animation-name: blow_556;
+}
+@keyframes blow_556 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 64vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_557 {
+  animation-name: blow_557;
+}
+@keyframes blow_557 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 14vw;
+    top: 11vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_558 {
+  animation-name: blow_558;
+}
+@keyframes blow_558 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 62vw;
+    top: 44vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_559 {
+  animation-name: blow_559;
+}
+@keyframes blow_559 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 61vw;
+    top: 73vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_560 {
+  animation-name: blow_560;
+}
+@keyframes blow_560 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 70vw;
+    top: 97vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_561 {
+  animation-name: blow_561;
+}
+@keyframes blow_561 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 46vw;
+    top: 83vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_562 {
+  animation-name: blow_562;
+}
+@keyframes blow_562 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 44vw;
+    top: 41vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_563 {
+  animation-name: blow_563;
+}
+@keyframes blow_563 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 10vw;
+    top: 38vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_564 {
+  animation-name: blow_564;
+}
+@keyframes blow_564 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 67vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_565 {
+  animation-name: blow_565;
+}
+@keyframes blow_565 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 100vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_566 {
+  animation-name: blow_566;
+}
+@keyframes blow_566 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 55vw;
+    top: 48vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_567 {
+  animation-name: blow_567;
+}
+@keyframes blow_567 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 47vw;
+    top: 32vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_568 {
+  animation-name: blow_568;
+}
+@keyframes blow_568 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 33vw;
+    top: 22vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_569 {
+  animation-name: blow_569;
+}
+@keyframes blow_569 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 29vw;
+    top: 79vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_570 {
+  animation-name: blow_570;
+}
+@keyframes blow_570 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 95vw;
+    top: 11vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_571 {
+  animation-name: blow_571;
+}
+@keyframes blow_571 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 23vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_572 {
+  animation-name: blow_572;
+}
+@keyframes blow_572 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 95vw;
+    top: 10vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_573 {
+  animation-name: blow_573;
+}
+@keyframes blow_573 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 56vw;
+    top: 59vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_574 {
+  animation-name: blow_574;
+}
+@keyframes blow_574 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 3vw;
+    top: 10vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_575 {
+  animation-name: blow_575;
+}
+@keyframes blow_575 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 29vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_576 {
+  animation-name: blow_576;
+}
+@keyframes blow_576 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 41vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_577 {
+  animation-name: blow_577;
+}
+@keyframes blow_577 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 89vw;
+    top: 9vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_578 {
+  animation-name: blow_578;
+}
+@keyframes blow_578 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 83vw;
+    top: 63vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_579 {
+  animation-name: blow_579;
+}
+@keyframes blow_579 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 60vw;
+    top: 37vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_580 {
+  animation-name: blow_580;
+}
+@keyframes blow_580 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 75vw;
+    top: 23vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_581 {
+  animation-name: blow_581;
+}
+@keyframes blow_581 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 30vw;
+    top: 37vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_582 {
+  animation-name: blow_582;
+}
+@keyframes blow_582 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 64vw;
+    top: 5vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_583 {
+  animation-name: blow_583;
+}
+@keyframes blow_583 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 34vw;
+    top: 33vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_584 {
+  animation-name: blow_584;
+}
+@keyframes blow_584 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 68vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_585 {
+  animation-name: blow_585;
+}
+@keyframes blow_585 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 51vw;
+    top: 4vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_586 {
+  animation-name: blow_586;
+}
+@keyframes blow_586 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 24vw;
+    top: 100vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_587 {
+  animation-name: blow_587;
+}
+@keyframes blow_587 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 20vw;
+    top: 90vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_588 {
+  animation-name: blow_588;
+}
+@keyframes blow_588 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 90vw;
+    top: 25vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_589 {
+  animation-name: blow_589;
+}
+@keyframes blow_589 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 48vw;
+    top: 87vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_590 {
+  animation-name: blow_590;
+}
+@keyframes blow_590 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 67vw;
+    top: 52vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_591 {
+  animation-name: blow_591;
+}
+@keyframes blow_591 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 9vw;
+    top: 51vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_592 {
+  animation-name: blow_592;
+}
+@keyframes blow_592 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 87vw;
+    top: 90vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_593 {
+  animation-name: blow_593;
+}
+@keyframes blow_593 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 17vw;
+    top: 61vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_594 {
+  animation-name: blow_594;
+}
+@keyframes blow_594 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 16vw;
+    top: 89vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_595 {
+  animation-name: blow_595;
+}
+@keyframes blow_595 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 99vw;
+    top: 65vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_596 {
+  animation-name: blow_596;
+}
+@keyframes blow_596 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 96vw;
+    top: 67vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_597 {
+  animation-name: blow_597;
+}
+@keyframes blow_597 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 25vw;
+    top: 89vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_598 {
+  animation-name: blow_598;
+}
+@keyframes blow_598 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 89vw;
+    top: 92vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_599 {
+  animation-name: blow_599;
+}
+@keyframes blow_599 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 97vw;
+    top: 85vh;
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked ~ .wrapper .item_600 {
+  animation-name: blow_600;
+}
+@keyframes blow_600 {
+  0% {
+    left: 50%;
+    top: 30%;
+    opacity: 0;
+  }
+  10%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 91vw;
+    top: 46vh;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  0%, 60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+input[type=checkbox]:checked,
+input[type=checkbox]:checked ~ label {
+  position: absolute;
+  left: -9999999;
+  display: none;
+}
+
+@keyframes spark-fire {
+  0% {
+    opacity: 0;
+  }
+  20%, 100% {
+    opacity: 1;
+  }
+}
+@keyframes curved-tui {
+  0%, 98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes tui-on-fire {
+  0% {
+    height: var(--tui-long-h);
+  }
+  96% {
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
+@keyframes resize {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  20% {
+    transform: scale(3) translateY(20%);
+  }
+  60% {
+    transform: scale(3) translateY(60%);
+  }
+  65% {
+    transform: scale(0.1) translateY(100%);
+  }
+  70%, 100% {
+    transform: scale(0.1) translateY(100%);
+  }
+}
+.fc-main {
+  width: calc(var(--width));
+  height: calc(var(--width) * 4);
+  position: relative;
+  transform-origin: bottom;
+}
+
+.fc-main::after {
+  content: "";
+  position: absolute;
+  background: repeating-linear-gradient(155deg, #8e0a0a, #b01515 20%);
+  height: calc(var(--width) * 4);
+  width: calc(var(--width));
+  border-radius: 4px;
+}
+
+.fc-tui {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  height: calc(var(--tui-dia) / 2);
+  width: calc(var(--tui-dia) / 2);
+  position: absolute;
+  top: -0.5em;
+  right: var(--tui-rpos);
+  z-index: -2;
+  background: linear-gradient(45deg, black 54%, transparent 50%), radial-gradient(transparent 48%, #444 49%, #222 50%, #ddd 70%, #111 100%);
+  transform: rotate(-45deg);
+}
+
+.fc-tui-long {
+  background: linear-gradient(to right, #444 1%, #222 10%, #ddd 80%, #111 100%);
+  height: var(--tui-long-h);
+  position: absolute;
+  right: var(--tui-rpos);
+  top: 0.2em;
+  transform-origin: top;
+  transform: rotateX(0deg);
+  width: var(--tui-w);
+}
+
+.spark {
+  background: linear-gradient(orangered 30%, yellow, transparent);
+  border-radius: 50px;
+  height: 3px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 99%;
+  transform: translateX(-50%);
+  width: 5px;
+}
+
+.spark::after {
+  content: "";
+  position: absolute;
+  border-radius: 50px 50px 0 0;
+  height: 8px;
+  width: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(yellow, orangered 0.5px, rgba(255, 255, 255, 0) 0.5px);
+  background-size: 1.5px 2px;
+  top: 10%;
+  animation: spark 0.5s linear infinite forwards;
+}
+
+@keyframes spark {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 20px;
+  }
+}
+.spreader::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 3px;
+  background: yellow;
+  box-shadow: 0 0 5px orange;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+  z-index: 898;
+  opacity: 0;
+}
+
+@keyframes take_off {
+  0% {
+    top: 80%;
+    left: 50%;
+    opacity: 0;
+  }
+  30%, 80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    left: 50%;
+    top: 32%;
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
